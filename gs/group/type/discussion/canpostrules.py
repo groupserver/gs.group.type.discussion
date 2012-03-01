@@ -1,5 +1,4 @@
 # coding=utf-8
-from zope.cachedescriptors.property import Lazy
 from gs.group.member.canpost.rules import BaseRule
 from gs.group.member.base.utils import user_member_of_group
 from gs.profile.email.base.emailuser import EmailUser

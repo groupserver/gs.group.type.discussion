@@ -25,6 +25,11 @@
       .interfaces.IGSDiscussionGroup"
     provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
     factory=".canpostrules.WorkingEmail"  />
-
+  <adapter
+    name="Posting Limit Hit"
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+      .interfaces.IGSDiscussionGroup"
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    factory=".postinglimitcanpostrule.PostingLimit"  />
 </configure>
 
