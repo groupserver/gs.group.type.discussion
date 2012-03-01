@@ -17,7 +17,9 @@ class NotAnonymous(BaseRule):
                 self.s['canPost'] = True
                 self.s['status'] = u'have a profile.'
                 self.s['statusNum'] = 0
-                
+            self.s['checked'] = True
+
+        assert self.s['checked']                
         assert type(self.s['canPost']) == bool
         assert type(self.s['status']) == unicode
         assert type(self.s['statusNum']) == int
@@ -27,7 +29,7 @@ class IsMember(BaseRule):
     weight=30
             
     def check(self):
-        if not self.__checked:
+        if not self.s['checked']:
             if user_member_of_group(self.userInfo, self.groupInfo):
                 self.s['canPost'] = True
                 self.s['status'] = u'a member.'
@@ -36,7 +38,9 @@ class IsMember(BaseRule):
                 self.s['canPost'] = False
                 self.s['status'] = u'not a member.'
                 self.s['statusNum'] = self.weight
-                
+            self.s['checked'] = True
+
+        assert self.s['checked']                
         assert type(self.s['canPost']) == bool
         assert type(self.s['status']) == unicode
         assert type(self.s['statusNum']) == int
@@ -48,7 +52,7 @@ class WorkingEmail(BaseRule):
     weight=40
     
     def check(self):
-        if not self.__checked:
+        if not self.s['checked']:
             emailUser = EmailUser(self.groupInfo.groupObj, self.userInfo)
             preferredEmailAddresses = emailUser.get_delivery_addresses()
             if (len(preferredEmailAddresses) >= 1):
@@ -59,7 +63,9 @@ class WorkingEmail(BaseRule):
                 self.s['canPost'] = False
                 self.s['status'] = u'no working email address.'
                 self.s['statusNum'] = self.weight
-                
+            self.s['checked'] = True
+
+        assert self.s['checked']                
         assert type(self.s['canPost']) == bool
         assert type(self.s['status']) == unicode
         assert type(self.s['statusNum']) == int

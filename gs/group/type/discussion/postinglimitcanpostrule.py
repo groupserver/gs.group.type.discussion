@@ -37,7 +37,7 @@ class PostingLimit(BaseRule):
         return retval
 
     def check(self):
-        if not self.__checked:
+        if not self.s['checked']:
             if user_participation_coach_of_group(self.userInfo, self.groupInfo):
                 self.s['canPost'] = True
                 self.s['status'] = u'a participation coach.'
@@ -67,7 +67,9 @@ class PostingLimit(BaseRule):
                     self.s['canPost'] = True
                     self.s['status'] = u'under the posting limit.'
                     self.s['statusNum'] = 0
-                
+            self.s['checked'] = True
+
+        assert self.s['checked']                
         assert type(self.s['canPost']) == bool
         assert type(self.s['status']) == unicode
         assert type(self.s['statusNum']) == int
