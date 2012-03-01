@@ -5,5 +5,18 @@
   
   <interface interface=".interfaces.IGSDiscussionGroup"
     type="zope.app.content.interfaces.IContentType" />
+  <adapter
+    name="Have a Profile"
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+      .interfaces.IGSDiscussionGroup"
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    factory=".canpostrules.NotAnonymous"  />
+  <adapter
+    name="Member"
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+      .interfaces.IGSDiscussionGroup"
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    factory=".canpostrules.IsMember"  />
+
 </configure>
 
