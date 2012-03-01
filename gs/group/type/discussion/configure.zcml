@@ -5,8 +5,10 @@
   
   <interface interface=".interfaces.IGSDiscussionGroup"
     type="zope.app.content.interfaces.IContentType" />
+
+  <!-- The can-post rules for a discussion group. -->
   <adapter
-    name="Have a Profile"
+    name="Has a Profile"
     for="Products.CustomUserFolder.interfaces.IGSUserInfo 
       .interfaces.IGSDiscussionGroup"
     provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
@@ -17,6 +19,12 @@
       .interfaces.IGSDiscussionGroup"
     provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
     factory=".canpostrules.IsMember"  />
+  <adapter
+    name="Working Email Address"
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+      .interfaces.IGSDiscussionGroup"
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    factory=".canpostrules.WorkingEmail"  />
 
 </configure>
 

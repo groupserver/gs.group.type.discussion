@@ -34,6 +34,7 @@ setup(name='gs.group.type.discussion',
         'setuptools',
         'gs.group.base',
         'gs.group.member.canpost',
+        'gs.profile.email.base',
         # -*- Extra requirements: -*-
     ],
     entry_points="""
