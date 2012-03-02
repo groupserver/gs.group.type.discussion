@@ -26,10 +26,22 @@
     provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
     factory=".canpostrules.WorkingEmail"  />
   <adapter
-    name="Posting Limit Hit"
+    name="Posting Limit"
     for="Products.CustomUserFolder.interfaces.IGSUserInfo 
       .interfaces.IGSDiscussionGroup"
     provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
     factory=".postinglimitcanpostrule.PostingLimit"  />
+  <adapter
+    name="Required Site Properties"
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+      .interfaces.IGSDiscussionGroup"
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    factory=".requiredpropertiescanpostrule.RequiredSiteProperties"  />
+  <adapter
+    name="Required Group Properties"
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+      .interfaces.IGSDiscussionGroup"
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    factory=".requiredpropertiescanpostrule.RequiredGroupProperties"  />
 </configure>
 
