@@ -35,7 +35,7 @@ setup(name='gs.group.type.discussion',
         'gs.group.base',
         'gs.group.member.canpost',
         'gs.profile.email.base',
-        'Products.XWFCore.XWFUtils',
+        'Products.XWFCore',
         # -*- Extra requirements: -*-
     ],
     entry_points="""
