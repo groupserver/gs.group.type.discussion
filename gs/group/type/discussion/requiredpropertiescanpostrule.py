@@ -32,14 +32,14 @@ class RequiredSiteProperties(BaseRule):
     
     @Lazy
     def requiredSiteProperties(self):
-        retval = [n for n, a in self.siteProperties if a.required]
+        retval = [(n, a) for n, a in self.siteProperties if a.required]
         assert type(retval) == list
         return retval
     
     @Lazy
     def unsetRequiredProperties(self):
-        retval = [p for p in self.requiredSiteProperties
-                  if not(self.userInfo.get_property(p, None))]
+        retval = [n for n, a in self.requiredSiteProperties
+                  if not(self.userInfo.get_property(n, None))]
         return retval
     
     def check(self):
@@ -47,21 +47,20 @@ class RequiredSiteProperties(BaseRule):
             if self.unsetRequiredProperties:
                 self.s['canPost'] = False
                 fields = [a.title for n, a in self.siteProperties 
-                      if n in unsetRequiredProps]
+                      if n in self.unsetRequiredProperties]
                 f = comma_comma_and(fields)
                 attr = (len(fields) == 1 and u'attribute') or u'attributes'
                 isare = (len(fields) == 1 and u'is') or u'are'
                 self.s['status'] = u'the %s that %s required by the '\
                     u'site (%s) %s not set' %\
                     (attr, isare, f, isare)
-                self.s['statusNum'] = weight
+                self.s['statusNum'] = self.weight
             else:
                 self.s['canPost'] = True
                 self.s['status'] = u'properties that are required by '\
                     u'the site are set.'
                 self.s['statusNum'] = 0
             self.s['checked'] = True
-
         assert self.s['checked']                
         assert type(self.s['canPost']) == bool
         assert type(self.s['status']) == unicode
@@ -99,21 +98,20 @@ class RequiredGroupProperties(RequiredSiteProperties):
             if self.unsetRequiredProperties:
                 self.s['canPost'] = False
                 fields = [a.title for n, a in self.siteProperties 
-                      if n in unsetRequiredProps]
+                      if n in self.unsetRequiredProps]
                 f = comma_comma_and(fields)
                 attr = (len(fields) == 1 and u'attribute') or u'attributes'
                 isare = (len(fields) == 1 and u'is') or u'are'
                 self.s['status'] = u'the %s that %s required by the '\
                     u'group (%s) %s not set' %\
                     (attr, isare, f, isare)
-                self.s['statusNum'] = weight
+                self.s['statusNum'] = self.weight
             else:
                 self.s['canPost'] = True
                 self.s['status'] = u'properties that are required by '\
                     u'the group are set.'
                 self.s['statusNum'] = 0
             self.s['checked'] = True
-
         assert self.s['checked']                
         assert type(self.s['canPost']) == bool
         assert type(self.s['status']) == unicode
