@@ -1,10 +1,9 @@
 <div id="gs-group-type-discussion-canpost-not-a-member" 
   class="gs-group-member-canpost-info">
-  <strong>You cannot post</strong> because you are 
-  <strong 
-    tal:attributes="title string:Reason ${view/canPost/statusNum}">not 
-    a member</strong>
-  of
+  <strong
+    tal:attributes="title string:Reason ${view/canPost/statusNum}">You
+    cannot post</strong> 
+  because <strong>only members can post</strong> to
   <span class="group" 
     tal:content="view/groupInfo/name">this group</span>.
   <span id="gs-group-type-discussion-canpost-not-a-member-join"
