@@ -73,5 +73,10 @@
       .interfaces.IGSDiscussionGroup"
     provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
     factory=".requiredpropertiescanpostrule.RequiredGroupProperties"  />
+  <browser:viewlet name="gs-group-type-discussion-canpost-no-group-props"
+    manager="gs.group.member.canpost.interfaces.ICanPostInfo"
+    template="browser/templates/nositeproperties.pt"
+    class=".canpostviewlets.NoGroupProperties"
+    permission="zope2.View" />
 </configure>
 

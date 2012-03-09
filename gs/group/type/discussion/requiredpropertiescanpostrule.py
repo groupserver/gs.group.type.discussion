@@ -52,8 +52,7 @@ class RequiredSiteProperties(BaseRule):
                 attr = (len(fields) == 1 and u'attribute') or u'attributes'
                 isare = (len(fields) == 1 and u'is') or u'are'
                 self.s['status'] = u'the %s that %s required by the '\
-                    u'site (%s)' %\
-                    (attr, isare, f)
+                    u'site (%s)' % (attr, isare, f)
                 self.s['statusNum'] = self.weight
             else:
                 self.s['canPost'] = True
@@ -103,8 +102,7 @@ class RequiredGroupProperties(RequiredSiteProperties):
                 attr = (len(fields) == 1 and u'attribute') or u'attributes'
                 isare = (len(fields) == 1 and u'is') or u'are'
                 self.s['status'] = u'the %s that %s required by the '\
-                    u'group (%s) %s not set' %\
-                    (attr, isare, f, isare)
+                    u'group (%s)' % (attr, isare, f)
                 self.s['statusNum'] = self.weight
             else:
                 self.s['canPost'] = True
