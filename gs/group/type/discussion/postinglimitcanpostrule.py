@@ -1,12 +1,14 @@
 # coding=utf-8
-from datetime import timedelta
+from datetime import timedelta, datetime
 from zope.cachedescriptors.property import Lazy
+from zope.component import createObject
 from Products.XWFCore.XWFUtils import curr_time as now, \
     timedelta_to_string
 from gs.group.member.canpost.rules import BaseRule
 from gs.group.member.base.utils import user_admin_of_group, \
     user_participation_coach_of_group
 from Products.GSSearch.queries import MessageQuery
+from Products.XWFCore.XWFUtils import munge_date
 
 class PostingLimit(BaseRule):
     u'''Each grop has a maximum posting rate. This rule ensures that
