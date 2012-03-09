@@ -33,8 +33,10 @@ setup(name='gs.group.type.discussion',
     install_requires=[
         'setuptools',
         'gs.group.base',
+        'gs.group.member.base',
         'gs.group.member.canpost',
         'gs.profile.email.base',
+        'Products.GSSearch',
         'Products.XWFCore',
         # -*- Extra requirements: -*-
     ],
