@@ -98,7 +98,7 @@ class RequiredGroupProperties(RequiredSiteProperties):
             if self.unsetRequiredProperties:
                 self.s['canPost'] = False
                 fields = [a.title for n, a in self.siteProperties 
-                      if n in self.unsetRequiredProps]
+                      if n in self.unsetRequiredProperties]
                 f = comma_comma_and(fields)
                 attr = (len(fields) == 1 and u'attribute') or u'attributes'
                 isare = (len(fields) == 1 and u'is') or u'are'
