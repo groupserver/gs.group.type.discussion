@@ -61,8 +61,8 @@ class PostingLimit(BaseRule):
                     prettyDate = munge_date(self.group, canPostDate, 
                                             user=self.userInfo.user)
                     prettyDelta = timedelta_to_string(canPostDate - n)
-                    self.s['status'] = u'over the posting limit. You '\
-                        u'can post again at %s (in %s).' % \
+                    self.s['status'] = u'exceeded the posting rate. '\
+                        u'You can post again at %s (in %s).' % \
                         (prettyDate, prettyDelta)
                     self.s['statusNum'] = self.weight
                 else:

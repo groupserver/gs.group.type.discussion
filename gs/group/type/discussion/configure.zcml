@@ -49,6 +49,12 @@
       .interfaces.IGSDiscussionGroup"
     provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
     factory=".postinglimitcanpostrule.PostingLimit"  />
+  <browser:viewlet name="gs-group-type-discussion-canpost-posting-limit"
+    manager="gs.group.member.canpost.interfaces.ICanPostInfo"
+    template="browser/templates/postinglimit.pt"
+    class=".canpostviewlets.PostingLimitHit"
+    permission="zope2.View" />
+
   <adapter
     name="Required Site Properties"
     for="Products.CustomUserFolder.interfaces.IGSUserInfo 

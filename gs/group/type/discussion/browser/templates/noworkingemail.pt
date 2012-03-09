@@ -1,9 +1,10 @@
 <div id="gs-group-type-discussion-canpost-no-working-email" 
   class="gs-group-member-canpost-info">
-  <strong>You cannot post</strong> because you lack 
-  a preferred
   <strong
-    tal:attributes="title string:Reason ${view/canPost/statusNum}">email address.</strong>
+    tal:attributes="title string:Reason ${view/canPost/statusNum}">You 
+    cannot post</strong> 
+  because you lack a preferred
+  <strong>email address.</strong>
   Go to 
   <a
     tal:attributes="href string:${view/loggedInUser/url}/emailsettings.html"
