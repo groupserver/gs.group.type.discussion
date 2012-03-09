@@ -25,6 +25,12 @@
       .interfaces.IGSDiscussionGroup"
     provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
     factory=".canpostrules.IsMember"  />
+  <browser:viewlet name="gs-group-type-discussion-canpost-not-a-member"
+    manager="gs.group.member.canpost.interfaces.ICanPostInfo"
+    template="browser/templates/notamember.pt"
+    class=".canpostviewlets.NotAMember"
+    permission="zope2.View" />
+
   <adapter
     name="Working Email Address"
     for="Products.CustomUserFolder.interfaces.IGSUserInfo 

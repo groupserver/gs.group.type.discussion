@@ -2,6 +2,8 @@
 from urllib import urlencode
 from zope.cachedescriptors.property import Lazy
 from Products.GSGroup.joining import GSGroupJoining # --=mpj17=-- ?
+from Products.GSGroupMember.groupmembership import JoinableGroupsForSite,\
+    InvitationGroupsForSite
 from gs.group.member.canpost import RuleViewlet
 from canpostrules import NotAnonymous, IsMember, WorkingEmail
 from postinglimitcanpostrule import PostingLimit
@@ -41,6 +43,22 @@ class NotAMember(RuleViewlet):
     @Lazy
     def show(self):
         retval = self.canPost.statusNum == self.weight
+        assert type(retval) == bool
+        return retval
+        
+    @Lazy
+    def canJoin(self):
+        joinableGroups = JoinableGroupsForSite(self.loggedInUser.user)
+        retval = self.groupInfo.id in joinableGroups
+        assert type(retval) == bool
+        return retval
+
+    @Lazy
+    def canInvite(self):
+        invitationGroups = InvitationGroupsForSite(self.loggedInUser.user,
+                                               self.groupInfo.groupObj)
+        retval = (self.groupInfo.id in invitationGroups) and \
+          not self.canJoin
         assert type(retval) == bool
         return retval
 
