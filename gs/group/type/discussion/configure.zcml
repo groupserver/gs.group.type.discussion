@@ -37,6 +37,12 @@
       .interfaces.IGSDiscussionGroup"
     provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
     factory=".canpostrules.WorkingEmail"  />
+  <browser:viewlet name="gs-group-type-discussion-canpost-no-working-email"
+    manager="gs.group.member.canpost.interfaces.ICanPostInfo"
+    template="browser/templates/noworkingemail.pt"
+    class=".canpostviewlets.NoWorkingEmail"
+    permission="zope2.View" />
+
   <adapter
     name="Posting Limit"
     for="Products.CustomUserFolder.interfaces.IGSUserInfo 
