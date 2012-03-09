@@ -13,6 +13,12 @@
       .interfaces.IGSDiscussionGroup"
     provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
     factory=".canpostrules.NotAnonymous"  />
+  <browser:viewlet name="gs-group-type-discussion-canpost-anon"
+    manager="gs.group.member.canpost.interfaces.ICanPostInfo"
+    template="browser/templates/anon.pt"
+    class=".canpostviewlets.Anonymous"
+    permission="zope2.View" />
+    
   <adapter
     name="Member"
     for="Products.CustomUserFolder.interfaces.IGSUserInfo 
