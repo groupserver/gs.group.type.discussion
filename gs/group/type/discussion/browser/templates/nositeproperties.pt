@@ -7,7 +7,7 @@
   <span tal:replace="structure view/canPost/status"/>.
   To post, go to 
   <a href="#"
-    tal:attributes="href string:${view/loggedInUser/url}/edit.html;
+    tal:attributes="href string:${view/siteInfo/url}${view/loggedInUser/url}/edit.html;
       title string:Change the profile of ${view/loggedInUser/name}">your 
   Change Profile page</a> and set the required profile attributes.
 </div><!--gs-group-type-discussion-canpost-no-site-properties-->

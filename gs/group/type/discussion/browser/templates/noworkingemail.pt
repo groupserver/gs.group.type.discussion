@@ -7,7 +7,7 @@
   <strong>email address.</strong>
   Go to 
   <a
-    tal:attributes="href string:${view/loggedInUser/url}/emailsettings.html"
+    tal:attributes="href string:${view/siteInfo/url}${view/loggedInUser/url}/emailsettings.html"
     href="#">your email settings page,</a>
   and set a preferred email address.
 </div><!--gs-group-type-discussion-canpost-no-working-email-->
