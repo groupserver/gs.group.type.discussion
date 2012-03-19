@@ -7,20 +7,23 @@
   <span class="group" 
     tal:content="view/groupInfo/name">this group</span>.
   <span id="gs-group-type-discussion-canpost-not-a-member-join"
-    tal:condition="view/canJoin">
+    tal:condition="view/groupVisibility/isPublic">
     <a href="#" 
       tal:attributes="href string:${view/groupInfo/url}/join.html">Join 
       <span class="group"
         tal:content="view/groupInfo/name">this group</span></a>
     to post.
   </span><!--gs-group-type-discussion-canpost-not-a-member-join-->
-  <span id="gs-group-type-discussion-canpost-not-a-member-invite"
-    tal:condition="view/canInvite">
+  <span id="gs-group-type-discussion-canpost-not-a-member-request"
+    tal:condition="view/groupVisibility/isPrivate">To become a member 
+    you must
     <a tal:attributes="href string:${view/groupInfo/url}/request.html"
-      href="#">Request membership</a>
-    of
-    <span class="group"
-      tal:content="view/groupInfo/name">this group</span>.
+      href="#"><strong>request membership</strong> of <span class="group"
+          tal:content="view/groupInfo/name">this group</span>.</a>
+  </span><!--gs-group-type-discussion-canpost-not-a-member-request-->
+  <span id="gs-group-type-discussion-canpost-not-a-member-invite"
+    tal:condition="view/groupVisibility/isSecret">To become a member
+    you must be invited by the group administrator.
   </span><!--gs-group-type-discussion-canpost-not-a-member-invite-->
 </div><!--gs-group-type-discussion-canpost-not-a-member-->
 

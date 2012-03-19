@@ -1,10 +1,9 @@
 # coding=utf-8
 from urllib import urlencode
 from zope.cachedescriptors.property import Lazy
-from Products.GSGroup.joining import GSGroupJoining # --=mpj17=-- ?
-from Products.GSGroupMember.groupmembership import JoinableGroupsForSite,\
-    InvitationGroupsForSite
+from zope.component import createObject
 from gs.group.member.canpost import RuleViewlet
+from gs.group.privacy.interfaces import IGSGroupVisibility
 from canpostrules import NotAnonymous, IsMember, WorkingEmail
 from postinglimitcanpostrule import PostingLimit
 from requiredpropertiescanpostrule import RequiredSiteProperties, \
@@ -33,10 +32,6 @@ class Anonymous(RuleViewlet):
         retval = '/request_registration.html?%s' % urlencode(d)
         return retval
         
-    @Lazy
-    def joinability(self):
-        return GSGroupJoining(self.groupInfo.groupObj).joinability
-
 class NotAMember(RuleViewlet):
     weight = IsMember.weight
     
@@ -47,19 +42,9 @@ class NotAMember(RuleViewlet):
         return retval
         
     @Lazy
-    def canJoin(self):
-        joinableGroups = JoinableGroupsForSite(self.loggedInUser.user)
-        retval = self.groupInfo.id in joinableGroups
-        assert type(retval) == bool
-        return retval
-
-    @Lazy
-    def canInvite(self):
-        invitationGroups = InvitationGroupsForSite(self.loggedInUser.user,
-                                               self.groupInfo.groupObj)
-        retval = (self.groupInfo.id in invitationGroups) and \
-          not self.canJoin
-        assert type(retval) == bool
+    def groupVisibility(self):
+        retval = IGSGroupVisibility(self.groupInfo)
+        assert retval
         return retval
 
 class NoWorkingEmail(RuleViewlet):
@@ -70,7 +55,7 @@ class NoWorkingEmail(RuleViewlet):
         retval = self.canPost.statusNum == self.weight
         assert type(retval) == bool
         return retval
-
+        print text
 class PostingLimitHit(RuleViewlet):
     weight = PostingLimit.weight
     
