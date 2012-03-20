@@ -55,7 +55,7 @@ class NoWorkingEmail(RuleViewlet):
         retval = self.canPost.statusNum == self.weight
         assert type(retval) == bool
         return retval
-        print text
+
 class PostingLimitHit(RuleViewlet):
     weight = PostingLimit.weight
     
