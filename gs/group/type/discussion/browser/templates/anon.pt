@@ -1,5 +1,8 @@
 <div id="gs-group-type-discussion-canpost-anon" 
   class="gs-group-member-canpost-info">
+  <!--  =mpj17= Never shown in an email message. See the Unknown Email
+    -   notification in gs.group.member.canpost for more information. 
+    -->
   <strong>You cannot post</strong> because you are 
   <strong 
     tal:attributes="title string:Reason ${view/canPost/statusNum}">not 
@@ -9,13 +12,12 @@
     tal:content="view/groupInfo/name">this group</span>,
   <a href="#" class="login"
     tal:attributes="href view/loginUrl">login</a>.
-  <span tal:condition="python:view.joinability == 'anyone'">Otherwise 
-    <a href="#"
-      tal:attributes="href view/signupUrl"
-      title="Sign up and join this group">sign up,</a>
-    become a member of 
-    <span class="group" 
-      tal:content="view/groupInfo/name">this group</span>.
-  </span>
+  Otherwise 
+  <a href="#"
+    tal:attributes="href view/signupUrl"
+    title="Sign up and join this group">sign up,</a>
+  become a member of 
+  <span class="group" 
+    tal:content="view/groupInfo/name">this group</span>.
 </div><!--gs-group-type-discussion-canpost-anon-->
 

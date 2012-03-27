@@ -6,7 +6,8 @@
   <interface interface=".interfaces.IGSDiscussionGroup"
     type="zope.app.content.interfaces.IContentType" />
 
-  <!-- The can-post rules for a discussion group. -->
+  <!-- The can-post rules and viewlets for a discussion group. -->
+  
   <adapter
     name="Has a Profile"
     for="Products.CustomUserFolder.interfaces.IGSUserInfo 
