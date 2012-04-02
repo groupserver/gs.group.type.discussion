@@ -12,10 +12,10 @@ class RequiredSiteProperties(BaseRule):
     
     @Lazy
     def siteProperties(self):
-        '''Whole-heartly nicked from the GSProfile code, the site-wide
+        '''Whole-heartily nicked from the GSProfile code, the site-wide
         user properties rely on a bit of voodoo: the schemas themselves
-        are defined in the file-system, but which schema to use is stored
-        in the "GlobalConfiguration" instance.
+        are defined in the file-system, but which schema to use is 
+        stored in the "GlobalConfiguration" instance.
         '''
         site_root = self.group.site_root()
         assert hasattr(site_root, 'GlobalConfiguration')

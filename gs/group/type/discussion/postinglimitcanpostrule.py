@@ -11,9 +11,9 @@ from Products.GSSearch.queries import MessageQuery
 from Products.XWFCore.XWFUtils import munge_date
 
 class PostingLimit(BaseRule):
-    u'''Each grop has a maximum posting rate. This rule ensures that
+    u'''Each group has a maximum posting rate. This rule ensures that
     the members do not exceed the posting rate. The group administrators
-    and the participation coach are excempt from this rule.'''
+    and the participation coach are exempt from this rule.'''
     weight=50
     
     @Lazy
