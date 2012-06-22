@@ -18,8 +18,7 @@ class PostingLimit(BaseRule):
     
     @Lazy
     def messageQuery(self):
-        da = self.group.zsqlalchemy
-        retval = MessageQuery(self.group, da)
+        retval = MessageQuery(self.group)
         return retval
 
     @property
