@@ -18,7 +18,7 @@
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/anon.pt"
     class=".canpostviewlets.Anonymous"
-    permission="zope2.View" />
+    permission="zope.Public" />
     
   <adapter
     name="Member"
@@ -30,7 +30,7 @@
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/notamember.pt"
     class=".canpostviewlets.NotAMember"
-    permission="zope2.View" />
+    permission="zope.Public" />
 
   <adapter
     name="Working Email Address"
@@ -42,7 +42,7 @@
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/noworkingemail.pt"
     class=".canpostviewlets.NoWorkingEmail"
-    permission="zope2.View" />
+    permission="zope.Public" />
 
   <adapter
     name="Posting Limit"
@@ -54,7 +54,7 @@
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/postinglimit.pt"
     class=".canpostviewlets.PostingLimitHit"
-    permission="zope2.View" />
+    permission="zope.Public" />
 
   <adapter
     name="Required Site Properties"
@@ -66,7 +66,7 @@
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/nositeproperties.pt"
     class=".canpostviewlets.NoSiteProperties"
-    permission="zope2.View" />
+    permission="zope.Public" />
 
   <adapter
     name="Required Group Properties"
@@ -78,6 +78,6 @@
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/nositeproperties.pt"
     class=".canpostviewlets.NoGroupProperties"
-    permission="zope2.View" />
+    permission="zope.Public" />
 </configure>
 
