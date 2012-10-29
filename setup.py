@@ -32,6 +32,9 @@ setup(name='gs.group.type.discussion',
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'zope.app.apidoc',
+        'zope.cachedescriptors',
+        'zope.component',
         'gs.group.base',
         'gs.group.member.base',
         'gs.group.member.canpost',
@@ -39,7 +42,6 @@ setup(name='gs.group.type.discussion',
         'gs.profile.email.base',
         'Products.GSSearch',
         'Products.XWFCore',
-        # -*- Extra requirements: -*-
     ],
     entry_points="""
     # -*- Entry points: -*-
