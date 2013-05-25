@@ -1,23 +1,29 @@
 <div id="gs-group-type-discussion-canpost-anon" 
-  class="gs-group-member-canpost-info">
+     role="region" aria-labelledby="gs-group-type-discussion-canpost-anon-h"
+     class="gs-group-member-canpost-info well well-small">
   <!--  =mpj17= Never shown in an email message. See the Unknown Email
     -   notification in gs.group.member.canpost for more information. 
     -->
-  <strong>You cannot post</strong> because you are 
-  <strong 
-    tal:attributes="title string:Reason ${view/canPost/statusNum}">not 
+  <p id="gs-group-type-discussion-canpost-anon-h">
+    <strong>You cannot post</strong> because you are 
+    <strong 
+      tal:attributes="title string:Reason ${view/canPost/statusNum}">not 
     logged in.</strong>
-  If you are a member of
-  <span class="group" 
-    tal:content="view/groupInfo/name">this group</span>,
-  <a href="#" class="login"
-    tal:attributes="href view/loginUrl">login</a>.
-  Otherwise 
-  <a href="#"
-    tal:attributes="href view/signupUrl"
-    title="Sign up and join this group">sign up,</a>
-  become a member of 
-  <span class="group" 
-    tal:content="view/groupInfo/name">this group</span>.
+  </p>
+  <div id="gs-group-type-discussion-canpost-anon-sign-in">
+    <h4>Already a member?</h4>
+    <p>
+      <a href="#" tal:attributes="href view/loginUrl"
+         class="btn btn-small" data-icon="&#x1f512;">Sign in</a> to post.
+    </p>
+  </div><!--gs-group-type-discussion-canpost-anon-sign-in-->
+  <div id="gs-group-type-discussion-canpost-anon-sign-up">
+    <h4>Not a member?</h4>
+    <p>
+      <a class="btn btn-small" data-icon="&#10010;"
+         tal:attributes="href view/signupUrl"
+         title="Sign up and join this group"
+         href="/register.html">Register</a> to become a member.
+    </p>
+  </div><!--gs-group-type-discussion-canpost-anon-sign-up-->
 </div><!--gs-group-type-discussion-canpost-anon-->
-
