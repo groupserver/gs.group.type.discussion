@@ -2,31 +2,35 @@
 <configure xmlns="http://namespaces.zope.org/zope"
   xmlns:browser="http://namespaces.zope.org/browser"
   i18n_domain="groupserver">
-  
+
+  <include package="zope.viewlet" file="meta.zcml" />
+
   <interface interface=".interfaces.IGSDiscussionGroup"
     type="zope.app.content.interfaces.IContentType" />
 
   <!-- The can-post rules and viewlets for a discussion group. -->
-  
+
   <adapter
     name="Has a Profile"
-    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo
       .interfaces.IGSDiscussionGroup"
-    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule"
     factory=".canpostrules.NotAnonymous"  />
-  <browser:viewlet name="gs-group-type-discussion-canpost-anon"
+  <browser:viewlet
+    name="gs-group-type-discussion-canpost-anon"
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/anon.pt"
     class=".canpostviewlets.Anonymous"
     permission="zope.Public" />
-    
+
   <adapter
     name="Member"
-    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo
       .interfaces.IGSDiscussionGroup"
-    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule"
     factory=".canpostrules.IsMember"  />
-  <browser:viewlet name="gs-group-type-discussion-canpost-not-a-member"
+  <browser:viewlet
+    name="gs-group-type-discussion-canpost-not-a-member"
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/notamember.pt"
     class=".canpostviewlets.NotAMember"
@@ -34,11 +38,12 @@
 
   <adapter
     name="Working Email Address"
-    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo
       .interfaces.IGSDiscussionGroup"
-    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule"
     factory=".canpostrules.WorkingEmail"  />
-  <browser:viewlet name="gs-group-type-discussion-canpost-no-working-email"
+  <browser:viewlet
+    name="gs-group-type-discussion-canpost-no-working-email"
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/noworkingemail.pt"
     class=".canpostviewlets.NoWorkingEmail"
@@ -46,11 +51,12 @@
 
   <adapter
     name="Posting Limit"
-    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo
       .interfaces.IGSDiscussionGroup"
-    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule"
     factory=".postinglimitcanpostrule.PostingLimit"  />
-  <browser:viewlet name="gs-group-type-discussion-canpost-posting-limit"
+  <browser:viewlet
+    name="gs-group-type-discussion-canpost-posting-limit"
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/postinglimit.pt"
     class=".canpostviewlets.PostingLimitHit"
@@ -58,11 +64,12 @@
 
   <adapter
     name="Required Site Properties"
-    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo
       .interfaces.IGSDiscussionGroup"
-    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule"
     factory=".requiredpropertiescanpostrule.RequiredSiteProperties"  />
-  <browser:viewlet name="gs-group-type-discussion-canpost-no-site-props"
+  <browser:viewlet
+    name="gs-group-type-discussion-canpost-no-site-props"
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/nositeproperties.pt"
     class=".canpostviewlets.NoSiteProperties"
@@ -70,14 +77,14 @@
 
   <adapter
     name="Required Group Properties"
-    for="Products.CustomUserFolder.interfaces.IGSUserInfo 
+    for="Products.CustomUserFolder.interfaces.IGSUserInfo
       .interfaces.IGSDiscussionGroup"
-    provides="gs.group.member.canpost.interfaces.IGSCanPostRule" 
+    provides="gs.group.member.canpost.interfaces.IGSCanPostRule"
     factory=".requiredpropertiescanpostrule.RequiredGroupProperties"  />
-  <browser:viewlet name="gs-group-type-discussion-canpost-no-group-props"
+  <browser:viewlet
+    name="gs-group-type-discussion-canpost-no-group-props"
     manager="gs.group.member.canpost.interfaces.ICanPostInfo"
     template="browser/templates/nositeproperties.pt"
     class=".canpostviewlets.NoGroupProperties"
     permission="zope.Public" />
 </configure>
-
