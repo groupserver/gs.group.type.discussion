@@ -19,8 +19,7 @@ from gs.group.type.set import (SetABC, UnsetABC)
 class SetDiscussionGroup(SetABC):
     'Set a group folder to be a discussion group'
     name = 'Discussion group'
-    typeId = 'gs-group-type-discussion-set'
-    weight = 10
+    weight = 10  # Should almost always be towards the top of the list.
     show = True
 
     def set(self):
@@ -32,6 +31,7 @@ class SetDiscussionGroup(SetABC):
 
 class UnsetDiscussionGroup(UnsetABC):
     name = 'Discussion group'
+    setTypeId = 'gs-group-type-discussion-set'
 
     def unset(self):
         iFaces = ['gs.group.type.discussion.interfaces.IGSDiscussionGroup']
