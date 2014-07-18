@@ -94,5 +94,9 @@
     for="gs.group.base.interfaces.IGSGroupMarker"
     provides="gs.group.type.set.interfaces.ISetType"
     factory=".set.SetDiscussionGroup"  />
-
+  <!--Note that it is an unnamed adaptor-->
+  <adapter
+    for=".interfaces.IGSDiscussionGroup"
+    provides="gs.group.type.set.interfaces.IUnsetType"
+    factory=".set.UnsetDiscussionGroup"  />
 </configure>

@@ -13,7 +13,7 @@
 #
 ############################################################################
 from __future__ import absolute_import, unicode_literals
-from gs.group.type.set import SetABC
+from gs.group.type.set import (SetABC, UnsetABC)
 
 
 class SetDiscussionGroup(SetABC):
@@ -27,4 +27,12 @@ class SetDiscussionGroup(SetABC):
         '''Add the marker-interface to make the group into a discussion
         group.'''
         iFaces = ['gs.group.type.discussion.interfaces.IGSDiscussionGroup']
-        self.add_marker_interfaces(self.group, iFaces)
+        self.add_marker(self.group, iFaces)
+
+
+class UnsetDiscussionGroup(UnsetABC):
+    name = 'Discussion group'
+
+    def unset(self):
+        iFaces = ['gs.group.type.discussion.interfaces.IGSDiscussionGroup']
+        self.del_marker(self.group, iFaces)
