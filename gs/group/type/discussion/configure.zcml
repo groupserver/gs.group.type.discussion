@@ -98,5 +98,5 @@
   <adapter
     for=".interfaces.IGSDiscussionGroup"
     provides="gs.group.type.set.interfaces.IUnsetType"
-    factory=".set.UnsetDiscussionGroup"  />
+    factory=".set.UnsetDiscussionGroup" />
 </configure>
